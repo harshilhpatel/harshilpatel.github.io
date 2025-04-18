@@ -3,132 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Harshil Patel - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+      /* --- Font and Base Styles --- */
       @font-face {
         font-family: 'LucideIcons';
         src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
       }
       .lucide {
-        font-family: 'LucideIcons';
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        text-rendering: auto;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        font-family: 'LucideIcons'; font-style: normal; font-weight: normal;
+        font-variant: normal; text-rendering: auto; line-height: 1;
+        -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
         display: inline-block;
       }
-      /* Basic smooth scroll */
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
       body {
-        font-family: 'Inter', sans-serif;
-        background-color: #0a0a0a; /* Very dark background */
-        color: #e0e0e0; /* Light gray text */
-        overflow-x: hidden; /* Prevent horizontal scroll */
+        font-family: 'Inter', sans-serif; background-color: #0a0a0a;
+        color: #e0e0e0; overflow-x: hidden;
       }
-      /* Canvas Styling */
+      /* --- Particle Canvas --- */
       #particle-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1; /* Place behind content */
-        opacity: 0.4; /* Make particles subtle */
-        pointer-events: none; /* Allow clicks through canvas */
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1; opacity: 0.4; pointer-events: none;
       }
-      /* Content Styling */
+      /* --- Layout & Sections --- */
       .content-section {
-        min-height: 80vh; /* Give sections space */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 8rem 1.5rem; /* Generous padding */
-        position: relative; /* Needed for z-index stacking */
-        z-index: 1;
-        margin-bottom: 2rem; /* Add some space between sections */
-        /* --- Added Glowing Border Effect --- */
-        /* Subtle white/gray glow */
-        box-shadow: 0 0 20px 5px rgba(200, 200, 200, 0.08), /* Inner soft glow */
-                    0 0 40px 10px rgba(200, 200, 200, 0.05); /* Outer softer glow */
-        /* Optional: Add a subtle border */
-        /* border: 1px solid rgba(200, 200, 200, 0.1); */
-        border-radius: 1rem; /* Add slight rounding to match cards */
-        background-color: rgba(10, 10, 10, 0.5); /* Slightly differentiate section background */
-        backdrop-filter: blur(3px); /* Optional: slight blur for section background */
-        -webkit-backdrop-filter: blur(3px);
+        min-height: 80vh; display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        padding: 8rem 1.5rem; position: relative; z-index: 1;
+        margin-bottom: 2rem;
+        box-shadow: 0 0 20px 5px rgba(200, 200, 200, 0.08),
+                    0 0 40px 10px rgba(200, 200, 200, 0.05);
+        border-radius: 1rem; background-color: rgba(10, 10, 10, 0.5);
+        backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
       }
-       /* Apple-like button style */
-      .apple-button {
-        display: inline-block;
-        background-color: #2563eb; /* Blue accent */
-        color: white;
-        font-weight: 500;
-        padding: 0.75rem 1.5rem;
-        border-radius: 9999px; /* Pill shape */
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        text-decoration: none;
-      }
-      .apple-button:hover {
-        background-color: #1d4ed8; /* Darker blue on hover */
-        transform: scale(1.03);
-      }
-       /* Simple fade-in for sections (optional) */
-      .fade-in {
-        opacity: 0;
-        animation: fadeInAnimation 1s ease-out forwards;
-        animation-delay: 0.3s; /* Slight delay */
-      }
+      .fade-in { opacity: 0; animation: fadeInAnimation 1s ease-out forwards 0.3s; }
       @keyframes fadeInAnimation {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
       }
-      /* Header styling */
+      /* --- Header --- */
       header {
-        background-color: rgba(10, 10, 10, 0.8); /* Semi-transparent dark */
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px); /* Safari */
+        background-color: rgba(10, 10, 10, 0.8);
+        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
       }
-      header nav a {
-        transition: color 0.3s ease;
+      header nav a { transition: color 0.3s ease; }
+      header nav a:hover { color: #60a5fa; }
+      /* --- Buttons --- */
+      .apple-button {
+        display: inline-block; background-color: #2563eb; color: white;
+        font-weight: 500; padding: 0.75rem 1.5rem; border-radius: 9999px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        text-decoration: none; border: none; cursor: pointer;
       }
-      header nav a:hover {
-        color: #60a5fa; /* Light blue hover */
-      }
-      /* Project Card Styling */
-       .project-card {
-         background-color: rgba(31, 41, 55, 0.7); /* Semi-transparent gray-800 */
-         border: 1px solid rgba(75, 85, 99, 0.5); /* gray-600 border */
-         border-radius: 1rem; /* More rounded */
-         padding: 1.5rem;
+      .apple-button:hover { background-color: #1d4ed8; transform: scale(1.03); }
+      /* --- Project Cards --- */
+      .project-card {
+         background-color: rgba(31, 41, 55, 0.7); border: 1px solid rgba(75, 85, 99, 0.5);
+         border-radius: 1rem; padding: 1.5rem;
          transition: transform 0.3s ease, box-shadow 0.3s ease;
-         backdrop-filter: blur(5px);
-         -webkit-backdrop-filter: blur(5px);
-         /* Remove card-specific shadow if section glow is enough */
-         /* box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); */
+         backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
        }
-       .project-card:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Keep hover shadow */
+       .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); }
+       .project-card img { border-radius: 0.75rem; margin-bottom: 1rem; }
+       /* --- Footer --- */
+       footer { position: relative; z-index: 1; }
+
+       /* --- Contact Form Styles --- */
+       .form-input-group { margin-bottom: 1.5rem; position: relative; }
+       .form-label {
+         display: block; color: #a0a0a0; font-size: 0.875rem;
+         font-weight: 500; margin-bottom: 0.5rem;
        }
-       .project-card img {
-         border-radius: 0.75rem; /* Rounded image corners */
-         margin-bottom: 1rem;
+       .form-input, .form-textarea {
+         width: 100%; padding: 0.75rem 1rem;
+         background-color: rgba(31, 41, 55, 0.7); border: 1px solid rgba(75, 85, 99, 0.6);
+         border-radius: 0.5rem; color: #e0e0e0; font-size: 1rem;
+         transition: border-color 0.3s ease, box-shadow 0.3s ease;
+         backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
        }
-       /* Footer styling */
-       footer {
-         position: relative; /* Ensure footer is above canvas */
-         z-index: 1;
+       .form-input:focus, .form-textarea:focus {
+         outline: none; border-color: #2563eb;
+         box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.4);
        }
+       .form-textarea { min-height: 120px; resize: vertical; }
+       .form-error {
+         color: #f87171; font-size: 0.8rem; margin-top: 0.25rem; display: none;
+       }
+       .form-input.error, .form-textarea.error { border-color: #f87171; }
+       #form-status { margin-top: 1rem; font-weight: 500; display: none; }
+       #form-status.success { color: #34d399; }
+       #form-status.error { color: #f87171; }
+
     </style>
 </head>
 <body class="antialiased">
@@ -138,7 +108,7 @@
     <header class="sticky top-0 z-50 w-full">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center text-sm">
             <a href="#home" class="font-semibold text-lg text-gray-100 hover:text-white">
-                <span class="lucide mr-1 text-xl align-middle">&#xe91e;</span> [Your Name]
+                <span class="lucide mr-1 text-xl align-middle">&#xe91e;</span> Harshil Patel
             </a>
             <div class="space-x-6 md:space-x-8 text-gray-400">
                 <a href="#about" class="hover:text-white">About</a>
@@ -148,12 +118,13 @@
         </nav>
     </header>
 
-    <main class="pt-8 pb-8"> <section id="home" class="content-section text-center fade-in">
+    <main class="pt-8 pb-8">
+        <section id="home" class="content-section text-center fade-in">
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-gray-100 to-gray-400">
-                [Your Name]
+                Harshil Patel
             </h1>
             <p class="text-xl md:text-2xl mb-8 text-gray-400 max-w-2xl">
-                [Your Title/Tagline, e.g., Creative Developer & Designer] focused on building intuitive digital experiences.
+                Computer Science Student | Aspiring Software Developer
             </p>
             <a href="#projects" class="apple-button">
                 Explore Projects <span class="ml-1">&rarr;</span>
@@ -164,10 +135,13 @@
              <div class="container mx-auto px-6 max-w-3xl text-center">
                 <h2 class="text-3xl md:text-4xl font-semibold mb-8 text-gray-100">About Me</h2>
                 <p class="text-lg md:text-xl text-gray-400 leading-relaxed mb-4">
-                    I'm a [Your Role] with a passion for crafting elegant and effective solutions. My expertise lies in [mention key skills like front-end development, UI/UX design, specific technologies].
+                    I'm a passionate Computer Science student currently completing my first year in the Associate of Science program at Langara College in Vancouver, BC. My goal is to transfer to UBC to pursue a Bachelor's degree in Computer Science after my two years at Langara.
                 </p>
-                <p class="text-lg md:text-xl text-gray-400 leading-relaxed">
-                    I believe in clean code, thoughtful design, and continuous learning. Let's build something great together.
+                <p class="text-lg md:text-xl text-gray-400 leading-relaxed mb-4">
+                    My expertise lies in foundational programming concepts, problem-solving, and learning web technologies. I believe in clean code, thoughtful design, and continuous learning.
+                    </p>
+                 <p class="text-lg md:text-xl text-gray-400 leading-relaxed">
+                    Let's build something great together.
                 </p>
             </div>
         </section>
@@ -175,12 +149,13 @@
         <section id="projects" class="content-section fade-in">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-semibold mb-12 text-gray-100">Selected Work</h2>
+                <p class="text-gray-400 mb-10"> (Showcasing some projects below. Replace placeholders with your actual work) </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
                     <div class="project-card text-left">
-                        <img src="https://placehold.co/600x400/1f2937/9ca3af?text=Project+1" alt="Project 1 Screenshot" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x400/374151/9ca3af?text=Image+Error'">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-100">Project Title 1</h3>
-                        <p class="text-gray-400 mb-4 text-sm">Brief description focusing on the outcome or key feature. Built with [Tech Stack].</p>
+                        <img src="https://placehold.co/600x400/1f2937/60a5fa?text=Web+App+Demo" alt="Data Dashboard Screenshot" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x400/374151/9ca3af?text=Image+Error'">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-100">Interactive Data Dashboard</h3>
+                        <p class="text-gray-400 mb-4 text-sm">A responsive web application displaying data visualizations. Built with HTML, CSS, and JavaScript (using Chart.js).</p>
                         <div class="space-x-4">
                             <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Live Demo <span class="lucide text-xs align-middle">&#xe8a7;</span></a>
                             <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-300 text-sm font-medium">Code <span class="lucide text-xs align-middle">&#xe89f;</span></a>
@@ -189,8 +164,8 @@
 
                     <div class="project-card text-left">
                         <img src="https://placehold.co/600x400/1f2937/9ca3af?text=Project+2" alt="Project 2 Screenshot" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x400/374151/9ca3af?text=Image+Error'">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-100">Project Title 2</h3>
-                        <p class="text-gray-400 mb-4 text-sm">Another project description. Solved [Problem] using [Technology].</p>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-100">[Your Project Title 2]</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Describe your project here. What problem does it solve? What was your role? Built with [Tech Stack].</p>
                         <div class="space-x-4">
                             <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Live Demo <span class="lucide text-xs align-middle">&#xe8a7;</span></a>
                             <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-300 text-sm font-medium">Code <span class="lucide text-xs align-middle">&#xe89f;</span></a>
@@ -199,8 +174,8 @@
 
                     <div class="project-card text-left">
                         <img src="https://placehold.co/600x400/1f2937/9ca3af?text=Project+3" alt="Project 3 Screenshot" class="w-full h-auto object-cover" onerror="this.src='https://placehold.co/600x400/374151/9ca3af?text=Image+Error'">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-100">Project Title 3</h3>
-                        <p class="text-gray-400 mb-4 text-sm">Highlighting [Unique Aspect]. Technologies included [Tech Stack].</p>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-100">[Your Project Title 3]</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Describe this project. Mention any unique challenges or accomplishments. Built with [Tech Stack].</p>
                         <div class="space-x-4">
                             <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Live Demo <span class="lucide text-xs align-middle">&#xe8a7;</span></a>
                             <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-300 text-sm font-medium">Code <span class="lucide text-xs align-middle">&#xe89f;</span></a>
@@ -211,16 +186,37 @@
             </div>
         </section>
 
-        <section id="contact" class="content-section text-center fade-in">
-            <div class="container mx-auto px-6 max-w-2xl">
-                <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-gray-100">Let's Connect</h2>
-                <p class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
-                    Interested in collaborating or have a question? Feel free to reach out.
+        <section id="contact" class="content-section fade-in">
+            <div class="container mx-auto px-6 max-w-2xl w-full">
+                <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-center text-gray-100">Let's Connect</h2>
+                <p class="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed text-center">
+                    Interested in collaborating or have a question? Send me a message below.
                 </p>
-                <a href="mailto:your.email@example.com" class="apple-button mb-10">
-                    <span class="lucide mr-2 align-middle text-lg">&#xe32a;</span> Get In Touch
-                </a>
-                 <div class="flex justify-center space-x-6">
+
+                <form id="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_FORM_ID" method="POST" class="w-full">
+                    <div class="form-input-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="name" name="name" required class="form-input" placeholder="e.g., Jane Doe">
+                        <span class="form-error" id="name-error">Please enter your name.</span>
+                    </div>
+                    <div class="form-input-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" required class="form-input" placeholder="e.g., jane.doe@example.com">
+                         <span class="form-error" id="email-error">Please enter a valid email address.</span>
+                    </div>
+                    <div class="form-input-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" required class="form-textarea" placeholder="Your message here..."></textarea>
+                         <span class="form-error" id="message-error">Please enter your message.</span>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="apple-button">
+                            Send Message <span class="lucide ml-2 align-middle text-base">&#xe3ad;</span> </button>
+                    </div>
+                     <div id="form-status" class="text-center"></div>
+                </form>
+
+                 <div class="mt-12 flex justify-center space-x-6">
                      <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" title="GitHub" class="text-gray-500 hover:text-white transition duration-300">
                         <span class="lucide text-2xl">&#xe89f;</span>
                         <span class="sr-only">GitHub</span>
@@ -236,7 +232,7 @@
     </main>
 
     <footer class="text-center py-10 border-t border-gray-800/50">
-        <p class="text-sm text-gray-500">&copy; <span id="current-year"></span> [Your Name]. All rights reserved.</p>
+        <p class="text-sm text-gray-500">&copy; <span id="current-year"></span> Harshil Patel. All rights reserved.</p>
     </footer>
 
     <script>
@@ -244,131 +240,36 @@
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // --- Particle Canvas Logic ---
+        // (This code remains unchanged from the previous version)
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let particlesArray = [];
-        const numberOfParticles = 100; // Adjust density
-        const interactionDistance = 80; // How close mouse needs to be to affect particles
-
-        // Mouse position
-        const mouse = {
-            x: null,
-            y: null,
-            radius: interactionDistance
-        };
-
-        window.addEventListener('mousemove', (event) => {
-            mouse.x = event.clientX;
-            mouse.y = event.clientY;
-        });
-
-        window.addEventListener('mouseout', () => { // Reset mouse position when it leaves window
-             mouse.x = null;
-             mouse.y = null;
-        });
-
-
-        // Particle class
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        let particlesArray = []; const numberOfParticles = 100; const interactionDistance = 80;
+        const mouse = { x: null, y: null, radius: interactionDistance };
+        window.addEventListener('mousemove', (event) => { mouse.x = event.clientX; mouse.y = event.clientY; });
+        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
         class Particle {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.size = Math.random() * 2 + 1; // Particle size
-                this.baseX = this.x; // Store original position
-                this.baseY = this.y;
-                this.density = (Math.random() * 30) + 1; // How much particle moves
-                this.color = 'rgba(150, 150, 150, 0.8)'; // Particle color (light gray)
-            }
-
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.closePath();
-                ctx.fill();
-            }
-
-            update() {
-                // Calculate distance from mouse
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                // Check if mouse coordinates are valid before calculating distance
-                if (mouse.x === null || mouse.y === null) {
-                    distance = Infinity; // Treat as infinitely far if mouse is out
-                } else {
-                   distance = Math.sqrt(dx * dx + dy * dy);
-                }
-
-                let forceDirectionX = dx / distance;
-                let forceDirectionY = dy / distance;
-
-                // Calculate movement force based on distance
-                let maxDistance = mouse.radius;
-                let force = (maxDistance - distance) / maxDistance;
-                if (force < 0 || distance === Infinity) force = 0; // Ensure force isn't negative and handle Infinity
-
-                // Calculate direction vector * force * density
-                let directionX = (forceDirectionX * force * this.density);
-                let directionY = (forceDirectionY * force * this.density);
-
-
-                // Move particle away from mouse if close enough
-                if (distance < mouse.radius && mouse.x !== null) {
-                    this.x -= directionX;
-                    this.y -= directionY;
-                } else {
-                    // Return to base position if mouse is far away or out
-                    if (this.x !== this.baseX) {
-                        let dxReturn = this.x - this.baseX;
-                        this.x -= dxReturn / 10; // Smooth return
-                    }
-                    if (this.y !== this.baseY) {
-                        let dyReturn = this.y - this.baseY;
-                        this.y -= dyReturn / 10; // Smooth return
-                    }
-                }
-
-                // Boundary check (optional: keep particles within viewport)
-                // if (this.x < 0) this.x = 0;
-                // if (this.x > canvas.width) this.x = canvas.width;
-                // if (this.y < 0) this.y = 0;
-                // if (this.y > canvas.height) this.y = canvas.height;
-            }
+            constructor(x, y) { this.x = x; this.y = y; this.size = Math.random() * 2 + 1; this.baseX = this.x; this.baseY = this.y; this.density = (Math.random() * 30) + 1; this.color = 'rgba(150, 150, 150, 0.8)'; }
+            draw() { ctx.fillStyle = this.color; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.closePath(); ctx.fill(); }
+            update() { let dx = mouse.x - this.x; let dy = mouse.y - this.y; let distance; if (mouse.x === null || mouse.y === null) { distance = Infinity; } else { distance = Math.sqrt(dx * dx + dy * dy); } let forceDirectionX = distance !== 0 ? dx / distance : 0; let forceDirectionY = distance !== 0 ? dy / distance : 0; let maxDistance = mouse.radius; let force = (maxDistance - distance) / maxDistance; if (force < 0 || distance === Infinity) force = 0; let directionX = (forceDirectionX * force * this.density); let directionY = (forceDirectionY * force * this.density); if (distance < mouse.radius && mouse.x !== null) { this.x -= directionX; this.y -= directionY; } else { if (this.x !== this.baseX) { let dxReturn = this.x - this.baseX; this.x -= dxReturn / 10; } if (this.y !== this.baseY) { let dyReturn = this.y - this.baseY; this.y -= dyReturn / 10; } } }
         }
-
-        // Initialize particles
-        function initParticles() {
-            particlesArray = [];
-            for (let i = 0; i < numberOfParticles; i++) {
-                let x = Math.random() * canvas.width;
-                let y = Math.random() * canvas.height;
-                particlesArray.push(new Particle(x, y));
-            }
-        }
+        function initParticles() { particlesArray = []; for (let i = 0; i < numberOfParticles; i++) { let x = Math.random() * canvas.width; let y = Math.random() * canvas.height; particlesArray.push(new Particle(x, y)); } }
         initParticles();
-
-        // Animation loop
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas each frame
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
-            requestAnimationFrame(animateParticles); // Loop
-        }
+        function animateParticles() { ctx.clearRect(0, 0, canvas.width, canvas.height); for (let i = 0; i < particlesArray.length; i++) { particlesArray[i].update(); particlesArray[i].draw(); } requestAnimationFrame(animateParticles); }
         animateParticles();
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; mouse.radius = interactionDistance; initParticles(); });
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            mouse.radius = interactionDistance; // Recalculate radius if needed based on new size
-            initParticles(); // Reinitialize particles for new size
-        });
-
+        // --- Contact Form Logic ---
+        // (This code remains unchanged from the previous version)
+        const form = document.getElementById('contact-form');
+        const statusDiv = document.getElementById('form-status');
+        const nameInput = document.getElementById('name'); const emailInput = document.getElementById('email'); const messageInput = document.getElementById('message');
+        const nameError = document.getElementById('name-error'); const emailError = document.getElementById('email-error'); const messageError = document.getElementById('message-error');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        function validateForm() { let isValid = true; nameInput.classList.remove('error'); emailInput.classList.remove('error'); messageInput.classList.remove('error'); nameError.style.display = 'none'; emailError.style.display = 'none'; messageError.style.display = 'none'; statusDiv.style.display = 'none'; if (nameInput.value.trim() === '') { nameInput.classList.add('error'); nameError.style.display = 'block'; isValid = false; } if (emailInput.value.trim() === '' || !emailRegex.test(emailInput.value.trim())) { emailInput.classList.add('error'); emailError.style.display = 'block'; isValid = false; } if (messageInput.value.trim() === '') { messageInput.classList.add('error'); messageError.style.display = 'block'; isValid = false; } return isValid; }
+        async function handleSubmit(event) { event.preventDefault(); if (!validateForm()) { return; } const formData = new FormData(event.target); statusDiv.style.display = 'block'; statusDiv.textContent = 'Sending...'; statusDiv.className = 'text-center'; try { const response = await fetch(event.target.action, { method: form.method, body: formData, headers: { 'Accept': 'application/json' } }); if (response.ok) { statusDiv.textContent = "Thanks for your message! I'll get back to you soon."; statusDiv.classList.add('success'); form.reset(); } else { response.json().then(data => { if (Object.hasOwn(data, 'errors')) { statusDiv.textContent = data["errors"].map(error => error["message"]).join(", "); statusDiv.classList.add('error'); } else { statusDiv.textContent = 'Oops! There was a problem submitting your form.'; statusDiv.classList.add('error'); } }) } } catch (error) { statusDiv.textContent = 'Oops! There was a network error.'; statusDiv.classList.add('error'); } }
+        form.addEventListener("submit", handleSubmit);
+        [nameInput, emailInput, messageInput].forEach(input => { input.addEventListener('input', () => { if (input.classList.contains('error')) { input.classList.remove('error'); document.getElementById(`${input.id}-error`).style.display = 'none'; } }); });
     </script>
 
 </body>
